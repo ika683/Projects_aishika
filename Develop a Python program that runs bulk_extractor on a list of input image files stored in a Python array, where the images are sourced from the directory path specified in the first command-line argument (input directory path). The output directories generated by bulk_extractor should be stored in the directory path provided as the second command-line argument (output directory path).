@@ -1,0 +1,39 @@
+import argparse
+
+import sys
+
+import os
+
+import subprocess
+
+import threading
+
+def run_bulk_extractor(op_path, ip_path, thread_number):
+
+    res=f"bulk_extractor -o (args.op_path} {args.ip_path}{i}"
+    subprocess.run(res,shell=True)
+
+
+
+ parser argparse.ArgumentParser();
+
+ parser.add_argument("ip_path", type=str, help="Input Directory Path")
+
+ parser.add_argument("op_path", type=str, help="Output Directory Path")
+ parser.add_argument("threads_number", type=int, help="Number of threads to extract")
+
+args=parser.parse_args()
+
+files=[file for file in name if file.lower().endswith(('.txt','.png','.img'))]
+
+name= os.listdir(args.ip_path)
+
+for i in files:
+
+     threading.Thread(target-run_bulk_extractor,args=(args.ip_path,args.op_path))
+
+     thread.start()
+
+      print("Main thread continues to run... ")
+      thread.join()
+      print("Thread finished, main thread ends.")
