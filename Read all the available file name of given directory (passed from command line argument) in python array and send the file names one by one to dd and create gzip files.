@@ -1,0 +1,20 @@
+import os
+import subprocess
+import sys
+directory_path=sys.argv[1]
+output=sys.argv[2]
+n=sys.argv[2]
+m=sys.argv[3]
+file_names=os.listdir(directory_path)
+file_names=[file for file in file_names if os.path.isfile(os.path.join(directory_path,file))]
+for file in file_names:
+   command=f"sudo dd if={directory_path}/{file} of={output}/{file} bs=4M status=progress"
+ 
+   subprocess.call(command,shell=True)
+   print('disk image created successfully')
+   if (m=='gzip'):
+     command_=f"sudo dc3dd if={directory_path}/{file} of={output}/{file} | gzip > {output}/{file}image1.dd.gz"
+     subprocess.call(command,shell=True)
+     print('donr')
+else:
+  print('done')
