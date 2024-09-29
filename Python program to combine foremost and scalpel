@@ -1,0 +1,20 @@
+import os
+import sys
+import subprocess
+def toolRUN (tool, input file, output_dir, config):
+
+    if tool foremost':
+
+      command= f*foremost -T all -i (input_file) -o (output dir) -c (config_file
+
+      subprocess.run(command, shell True)
+
+  elif tool 'scalpel':
+
+      command f"scalpel -o output dir-i input file) c (config)"
+
+      subprocess.run(command, shell-True)
+tool sys.argv[1]
+input file sys.argv[2]
+output dir sys.argv[3] config sys.argv[4]
+toolRUN(tool, input_file, output dir, config)
