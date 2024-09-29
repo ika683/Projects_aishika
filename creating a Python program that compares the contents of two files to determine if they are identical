@@ -1,0 +1,32 @@
+import sys
+import hashlib
+
+def hash_file(file_path, algorithm):
+    hasher = hashlib.new(algorithm)
+    with open(file_path, 'rb') as f:
+        while chunk := f.read(8192):
+            hasher.update(chunk)
+    return hasher.hexdigest()
+
+def main():
+    if len(sys.argv) != 4:
+        print("Usage: python compare_files.py <file1> <file2> <hash_algorithm>")
+        sys.exit(1)
+
+    file1, file2, algorithm = sys.argv[1], sys.argv[2], sys.argv[3]
+
+    try:
+        hash1 = hash_file(file1, algorithm)
+        hash2 = hash_file(file2, algorithm)
+
+        if hash1 == hash2:
+            print("The files are identical.")
+        else:
+            print("The files are different.")
+    except ValueError:
+        print(f"Error: '{algorithm}' is not a valid hash algorithm.")
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
